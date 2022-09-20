@@ -34,8 +34,8 @@ namespace asu4net.Sensors
         [SerializeField] protected Color baseColor = Color.black;
         [SerializeField] protected Color detectingColor = Color.yellow;
         [SerializeField] private bool searchAll;
-        
-        [SerializeField] protected LayerMask baseLayer = DefaultLayerMask;
+
+        [field: SerializeField] public LayerMask baseLayer { get; protected set; } = DefaultLayerMask;
         [SerializeField] protected bool searchTarget;
         [ConditionalField(nameof(searchTarget))] [SerializeField] private LayerMask targetLayer = DefaultLayerMask;
         

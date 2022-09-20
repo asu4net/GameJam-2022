@@ -13,6 +13,7 @@ namespace asu4net.Movement
     public abstract class Jump : MonoBehaviour
     {
         #region Properties & inspector fields
+        
         protected bool pressed { get; private set; }
         protected bool released { get; private set; }
         protected float verticalSpeed
@@ -32,6 +33,7 @@ namespace asu4net.Movement
         [SerializeField] protected int maxJumps = 1;
         [SerializeField] private bool autoJump;
         [SerializeField] protected float coyoteTime = 0.05f;
+        [SerializeField] protected float jumpBufferingTime = 0.1f;
         [SerializeField] protected bool clampFallSpeed = true;
         [SerializeField] protected float maxFallSpeed = 15;
         [SerializeField][Range(0, 1)] protected float stopMultiplier = 0.5f;
@@ -41,6 +43,9 @@ namespace asu4net.Movement
         private AnimationManager animationManager;
         [SerializeField] [ConditionalField(nameof(useAnimations))]
         private string jumpAnimationName = Defaults.JumpAnimationName;
+
+        private bool jumpBuffered { get; set; }
+
         #endregion
 
         #region Unity life cycle
@@ -88,11 +93,9 @@ namespace asu4net.Movement
 
         protected virtual void OnGroundEnter(SensorHitEventArgs args)
         {
-            //Allow jump again...
-            canJump = true;
-            currentJumps = 0;
-            if (autoJump) return;
-            pressed = false;
+            ResetJump();
+            if (!jumpBuffered) return;
+            OnJumpBuffer();
         }
 
         protected virtual void OnGroundExit(SensorHitEventArgs args)
@@ -112,12 +115,40 @@ namespace asu4net.Movement
 
         #region Input System event subscribers
 
-        public void OnJumpInput(InputAction.CallbackContext context) =>
+        public void OnJumpInput(InputAction.CallbackContext context)
+        {
             SetJumpData(context.performed, context.canceled);
+            CheckJumpBuffering(context.performed);
+        }
 
         #endregion
 
         #region Methods
+
+        protected void ResetJump()
+        {
+            //Allow jump again...
+            canJump = true;
+            currentJumps = 0;
+            if (autoJump) return;
+            pressed = false;
+        }
+        
+        protected virtual void OnJumpBuffer() {}
+
+        private void CheckJumpBuffering(bool performed)
+        {
+            if (!performed || groundCheckSensor.isDetecting) return;
+            
+            IEnumerator SetJumpBuffered()
+            {
+                jumpBuffered = true;
+                yield return new WaitForSeconds(jumpBufferingTime);
+                jumpBuffered = false;
+            }
+
+            StartCoroutine(SetJumpBuffered());
+        }
 
         public virtual bool SetJumpData(bool pressedValue, bool releasedValue)
         {

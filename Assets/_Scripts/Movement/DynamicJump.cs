@@ -32,6 +32,11 @@ namespace asu4net.Movement
             jumpTime = 0;
         }
 
+        protected override void OnJumpBuffer()
+        {
+            JumpDuring(maxPressTime);
+        }
+
         #endregion
 
         #region Methods
