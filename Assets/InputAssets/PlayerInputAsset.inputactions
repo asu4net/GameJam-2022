@@ -1,5 +1,5 @@
 {
-    "name": "knight_inputs",
+    "name": "PlayerInputAsset",
     "maps": [
         {
             "name": "level",
@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "shoot_platform",
+                    "type": "Button",
+                    "id": "0f76aedd-bab4-4e73-82d5-72382af74ac7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -262,6 +271,28 @@
                     "action": "attack_direction",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "c087cd6f-91a8-438a-9d7e-6d9f9a1fb1cb",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard",
+                    "action": "shoot_platform",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba7bafd3-7432-4821-b5ba-023625845de4",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "controller",
+                    "action": "shoot_platform",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

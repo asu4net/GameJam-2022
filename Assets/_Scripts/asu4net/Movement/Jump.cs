@@ -125,7 +125,7 @@ namespace asu4net.Movement
 
         #region Methods
 
-        protected void ResetJump()
+        public void ResetJump()
         {
             //Allow jump again...
             canJump = true;

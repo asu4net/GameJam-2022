@@ -11,7 +11,7 @@ namespace asu4net.Movement
         
         [Separator("DynamicJump settings")] [Space]
         [SerializeField] private float jumpSpeed = 10;
-        [SerializeField] private float maxPressTime = 0.35f;
+        [field: SerializeField] public float maxPressTime { get; private set; } = 0.35f;
         #endregion
         
         #region Unity life cycle
@@ -49,7 +49,7 @@ namespace asu4net.Movement
                 yield return new WaitForSeconds(seconds);
                 SetJumpData(false, true);
             }
-
+            
             StartCoroutine(PressJump());
         }
         

@@ -6,12 +6,15 @@ namespace game.shot
     [RequireComponent(typeof(Rigidbody2D))]
     public class BulletController2D : MonoBehaviour
     {
-        private Rigidbody2D rb { get; set; }
+        protected Rigidbody2D rb { get; private set; }
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
+            OnAwake();
         }
+        
+        protected virtual void OnAwake() {}
         
         public void Fire(Shot2D sender, Vector2 force)
         {
