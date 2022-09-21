@@ -275,7 +275,7 @@
                 {
                     "name": "",
                     "id": "c087cd6f-91a8-438a-9d7e-6d9f9a1fb1cb",
-                    "path": "<Keyboard>/f",
+                    "path": "<Keyboard>/ctrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "keyboard",
@@ -286,7 +286,7 @@
                 {
                     "name": "",
                     "id": "ba7bafd3-7432-4821-b5ba-023625845de4",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "controller",

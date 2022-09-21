@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
-using asu4net.Movement;
+﻿using asu4net.Movement;
 using asu4net.Movement.Movement2D;
 using asu4net.Sensors.Sensors2D;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace game.shot
 {
@@ -16,81 +13,36 @@ namespace game.shot
         [field: SerializeField] private Vector2 lateralImpulseDir { get; set; } = new Vector2(0.5f, 0f);
         [field: SerializeField] private float disableWalkTime { get; set; } = .5f;
         [field: SerializeField] private float disableJumpTime { get; set; } = .5f;
-
         [field: SerializeField] private BoxSensor2D topSensor { get; set; }
         [field: SerializeField] private BoxSensor2D bottomSensor { get; set; }
         [field: SerializeField] private BoxSensor2D leftSensor { get; set; }
         [field: SerializeField] private BoxSensor2D rightSensor { get; set; }
+        
         private Collider2D coll2D { get; set; }
         public enum State { Projectile, Platform }
         private State state { get; set; } = State.Projectile;
-        private GameObject player { get; set; }
+        private GameManager gameManager { get; set; }
+        private Rigidbody2D playerRb { get; set; }
+        private Walk2D playerWalk { get; set; }
+        private Jump playerJump { get; set; }
+        private bool disposed { get; set; }
         
         private const string SnapTag = "snapPlatform";
 
         protected override void OnAwake()
         {
-            player = GameObject.FindWithTag(GameManager.PlayerTag);
+            gameManager = GameManager.instance;
+
             coll2D = GetComponent<Collider2D>();
 
-            var playerRb = player.GetComponent<Rigidbody2D>();
-            var playerWalk = player.GetComponent<Walk2D>();
-            var playerJump = player.GetComponent<Jump>();
-            
-            IEnumerator DisableWalk()
-            {
-                playerWalk.enabled = false;
-                yield return new WaitForSeconds(disableWalkTime);
-                playerWalk.enabled = true;
-            }
+            playerRb = gameManager.player.GetComponent<Rigidbody2D>();
+            playerWalk = gameManager.player.GetComponent<Walk2D>();
+            playerJump = gameManager.player.GetComponent<Jump>();
 
-            IEnumerator DisableJump()
-            {
-                playerJump.jumpEnabled = false;
-                yield return new WaitForSeconds(disableJumpTime);
-                playerJump.jumpEnabled = true;
-            }
-            
-            topSensor.onEnter.AddListener(args =>
-            {
-                if (state == State.Projectile) BecomePlatform();
-                playerJump.StartCoroutine(DisableJump());
-                playerRb.velocity = new Vector2(playerRb.velocity.x, 0);
-                playerRb.AddForce(Vector2.up * playerVerticalImpulse, ForceMode2D.Impulse);
-                Dispose();
-            });
-            
-            bottomSensor.onEnter.AddListener(args =>
-            {
-                if (state == State.Projectile) BecomePlatform();
-                playerJump.StartCoroutine(DisableJump());
-                playerJump.jumpEnabled = false;
-                playerRb.velocity = new Vector2(playerRb.velocity.x, 0);
-                playerRb.AddForce(Vector2.up * playerVerticalImpulse, ForceMode2D.Impulse);
-                Dispose();
-            });
-            
-            leftSensor.onEnter.AddListener(args =>
-            {
-                if (state == State.Projectile) BecomePlatform();
-                playerJump.StartCoroutine(DisableJump());
-                playerWalk.StartCoroutine(DisableWalk());
-                playerWalk.SetLookDir(-1);
-                var impulse = lateralImpulseDir;
-                impulse.x *= -1;
-                playerRb.AddForce(impulse * playerLateralImpulse, ForceMode2D.Impulse);
-                Dispose();
-            });
-            
-            rightSensor.onEnter.AddListener(args =>
-            {
-                if (state == State.Projectile) BecomePlatform();
-                playerJump.StartCoroutine(DisableJump());
-                playerWalk.StartCoroutine(DisableWalk());
-                playerWalk.SetLookDir(1);
-                playerRb.AddForce(lateralImpulseDir * playerLateralImpulse, ForceMode2D.Impulse);
-                Dispose();
-            });
+            topSensor.onEnter.AddListener(_ => PushPlayer(Vector2.up));
+            bottomSensor.onEnter.AddListener(_ => PushPlayer(Vector2.up));
+            leftSensor.onEnter.AddListener(_ => PushPlayer(new Vector2(-lateralImpulseDir.x, lateralImpulseDir.y)));
+            rightSensor.onEnter.AddListener(_ => PushPlayer(lateralImpulseDir));
         }
         
         protected override void OnFire(Shot2D sender, Vector2 force)
@@ -99,21 +51,45 @@ namespace game.shot
             coll2D.isTrigger = true;
             sender.onShotPerformed.AddListener(Dispose);
         }
+
+        private void PushPlayer(Vector2 direction)
+        {
+            if (disposed) return;
+            
+            print("Player pushed in direction: " + direction);
+            
+            if (state == State.Projectile) BecomePlatform();
+
+            playerRb.velocity = Vector3.zero;
+
+            playerJump.jumpEnabled = false;
+            gameManager.WaitAndDo(disableJumpTime, () => playerJump.jumpEnabled = true);
+
+            if (direction.x != 0)
+            {
+                playerWalk.enabled = false;
+                gameManager.WaitAndDo(disableWalkTime, () => playerWalk.enabled = true);
+                playerWalk.SetLookDir(direction.x);
+            }
+
+            var impulse = direction.x != 0 ? playerLateralImpulse : playerVerticalImpulse;
+
+            playerRb.AddForce(direction * impulse, ForceMode2D.Impulse);
+            Dispose();
+        }
+        
+        private void Dispose()
+        {
+            disposed = true;
+            Destroy(gameObject);
+        }
+        
         private void BecomePlatform()
         {
             state = State.Platform;
             coll2D.isTrigger = false;
             rb.Sleep();
             rb.isKinematic = true;
-        }
-        
-        private void Dispose()
-        {
-            topSensor.onEnter.RemoveAllListeners();
-            rightSensor.onEnter.RemoveAllListeners();
-            bottomSensor.onEnter.RemoveAllListeners();
-            leftSensor.onEnter.RemoveAllListeners();
-            Destroy(gameObject);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
