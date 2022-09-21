@@ -9,6 +9,7 @@ namespace game.shot
     [RequireComponent(typeof(Collider2D))]
     public class PlatformBulletController2D : BulletController2D
     {
+        [field: SerializeField] private float timeToEnable = 0.5f;
         [field: SerializeField] private float playerVerticalImpulse = 30f;
         [field: SerializeField] private float playerLateralImpulse = 30f;
         [field: SerializeField] private Vector2 lateralImpulseDir { get; set; } = new Vector2(0.5f, 0f);
@@ -28,6 +29,7 @@ namespace game.shot
         private Jump playerJump { get; set; }
         private bool disposed { get; set; }
         private Shot2D shot { get; set; }
+        private bool platformEnabled { get; set; }
         
         private const string SnapTag = "snapPlatform";
 
@@ -54,6 +56,7 @@ namespace game.shot
 
         protected override void OnFire(Shot2D sender, Vector2 force)
         {
+            gameManager.WaitAndDo(timeToEnable, () => platformEnabled = true);
             state = State.Projectile;
             coll2D.isTrigger = true;
             sender.onShotPerformed.AddListener(Dispose);
@@ -62,7 +65,7 @@ namespace game.shot
 
         private void PushPlayer(Vector2 direction)
         {
-            if (disposed) return;
+            if (disposed || !platformEnabled) return;
 
             if (state == State.Projectile) BecomePlatform();
 
