@@ -518,6 +518,52 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.46032923, y: 1.2550682}
   m_EdgeRadius: 0
+--- !u!1 &643574324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 643574326}
+  - component: {fileID: 643574325}
+  m_Layer: 0
+  m_Name: PathHistory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &643574325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643574324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f45067e5fc56f84db6d0f88dfb682df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <target>k__BackingField: {fileID: 2050832329}
+  <time>k__BackingField: 0.3
+--- !u!4 &643574326
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643574324}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &695652819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,7 +1172,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 413443666, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: 2127769889, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 2, y: -1, z: 0}
@@ -1158,7 +1204,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -1767337088, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: -1413649381, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 3, y: 0, z: 0}
@@ -1166,7 +1212,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 146790361, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: 1127172292, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 2, y: 1, z: 0}
@@ -1182,7 +1228,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -831959460, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: -2077782465, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 4, y: 1, z: 0}
@@ -1214,7 +1260,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -117739047, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: -1984772370, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 4, y: 2, z: 0}
@@ -1230,7 +1276,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -831959460, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: -2077782465, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 6, y: 2, z: 0}
@@ -2269,6 +2315,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0f76aedd-bab4-4e73-82d5-72382af74ac7
     m_ActionName: level/shoot_platform[/Keyboard/f,/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3f4c2612-2777-4619-963d-9e759b72ee97
+    m_ActionName: debug/RecordPath[/XInputControllerWindows/leftTrigger,/XInputControllerWindows1/leftTrigger,/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e135ad68-eb2d-4e90-b8e6-a52fef65a88c
+    m_ActionName: debug/ClearPath[/XInputControllerWindows/leftShoulder,/XInputControllerWindows1/leftShoulder,/Keyboard/t]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: controller
   m_DefaultActionMap: level
@@ -2366,6 +2420,7 @@ MonoBehaviour:
   <offset>k__BackingField: 1.5
   <force>k__BackingField: 5
   <cannon>k__BackingField: {fileID: 1736235963}
+  <cooldown>k__BackingField: 1
 --- !u!1 &2099381263
 GameObject:
   m_ObjectHideFlags: 0

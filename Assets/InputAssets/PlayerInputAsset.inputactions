@@ -295,6 +295,76 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "debug",
+            "id": "88f05485-9a1f-4377-b415-0c56111cdf38",
+            "actions": [
+                {
+                    "name": "RecordPath",
+                    "type": "Button",
+                    "id": "3f4c2612-2777-4619-963d-9e759b72ee97",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ClearPath",
+                    "type": "Button",
+                    "id": "e135ad68-eb2d-4e90-b8e6-a52fef65a88c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "c5ba23c4-095e-437e-9f35-4ffa283c59d9",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "controller",
+                    "action": "RecordPath",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "745c4205-4011-4f38-a9a6-3d8104be169e",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard",
+                    "action": "RecordPath",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9590cb56-d2ea-4836-8d32-5586a9fbd2a3",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "controller",
+                    "action": "ClearPath",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cc6151c5-3766-4e9a-a4b7-0758f78b2b6c",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard",
+                    "action": "ClearPath",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

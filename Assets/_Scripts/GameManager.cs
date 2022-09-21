@@ -23,11 +23,25 @@ namespace game
         
         public Coroutine WaitAndDo(float time, Action action)
             => StartCoroutine(DoAsync(time, action));
+
+        public Coroutine WaitAndDoWhile(float time, Action action, Func<bool> condition)
+            => StartCoroutine(DoAsyncWhile(time, action, condition));
         
         private static IEnumerator DoAsync(float time, Action action)
         {
             yield return new WaitForSeconds(time);
             action?.Invoke();
+        }
+        
+        private static IEnumerator DoAsyncWhile(float time, Action action, Func<bool> condition)
+        {
+            while (condition.Invoke())
+            {
+                yield return new WaitForSeconds(time);
+                action?.Invoke();
+            }
+
+            yield return null;
         }
         
         private void SingletonInit()

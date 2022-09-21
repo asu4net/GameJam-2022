@@ -1,4 +1,5 @@
-﻿using asu4net.Movement;
+﻿using System;
+using asu4net.Movement;
 using asu4net.Movement.Movement2D;
 using asu4net.Sensors.Sensors2D;
 using UnityEngine;
@@ -26,6 +27,7 @@ namespace game.shot
         private Walk2D playerWalk { get; set; }
         private Jump playerJump { get; set; }
         private bool disposed { get; set; }
+        private Shot2D shot { get; set; }
         
         private const string SnapTag = "snapPlatform";
 
@@ -44,12 +46,18 @@ namespace game.shot
             leftSensor.onEnter.AddListener(_ => PushPlayer(new Vector2(-lateralImpulseDir.x, lateralImpulseDir.y)));
             rightSensor.onEnter.AddListener(_ => PushPlayer(lateralImpulseDir));
         }
-        
+
+        private void Update()
+        {
+            if (shot.released) Dispose();
+        }
+
         protected override void OnFire(Shot2D sender, Vector2 force)
         {
             state = State.Projectile;
             coll2D.isTrigger = true;
             sender.onShotPerformed.AddListener(Dispose);
+            shot = sender;
         }
 
         private void PushPlayer(Vector2 direction)
