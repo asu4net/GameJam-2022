@@ -409,8 +409,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31c711dac63a4993bb09312367a967de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToEnable: 0.5
   playerVerticalImpulse: 15
   playerLateralImpulse: 15
+  lateralMultiplierHold: 1.5
+  verticalMultiplierHold: 1.5
+  lateralMultiplierPerfect: 2
+  verticalMultiplierPerfect: 2
   <lateralImpulseDir>k__BackingField: {x: 1, y: 0.5}
   <disableWalkTime>k__BackingField: 1
   <disableJumpTime>k__BackingField: 1
