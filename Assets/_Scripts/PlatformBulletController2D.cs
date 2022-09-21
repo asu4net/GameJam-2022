@@ -55,9 +55,7 @@ namespace game.shot
         private void PushPlayer(Vector2 direction)
         {
             if (disposed) return;
-            
-            print("Player pushed in direction: " + direction);
-            
+
             if (state == State.Projectile) BecomePlatform();
 
             playerRb.velocity = Vector3.zero;
