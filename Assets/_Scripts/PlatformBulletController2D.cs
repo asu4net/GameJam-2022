@@ -3,15 +3,21 @@ using asu4net.Movement;
 using asu4net.Movement.Movement2D;
 using asu4net.Sensors.Sensors2D;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace game.shot
 {
     [RequireComponent(typeof(Collider2D))]
     public class PlatformBulletController2D : BulletController2D
     {
+        public UnityEvent onPush;
+        public UnityEvent onPoweredPush;
+        
         [field: SerializeField] private float timeToEnable = 0.5f;
         [field: SerializeField] private float playerVerticalImpulse = 30f;
+        [field: SerializeField] private float verticalMultiplier = 1.5f;
         [field: SerializeField] private float playerLateralImpulse = 30f;
+        [field: SerializeField] private float lateralMultiplier = 1.5f;
         [field: SerializeField] private Vector2 lateralImpulseDir { get; set; } = new Vector2(0.5f, 0f);
         [field: SerializeField] private float disableWalkTime { get; set; } = .5f;
         [field: SerializeField] private float disableJumpTime { get; set; } = .5f;
@@ -82,6 +88,17 @@ namespace game.shot
             }
 
             var impulse = direction.x != 0 ? playerLateralImpulse : playerVerticalImpulse;
+
+            if (shot.pressed)
+            {
+                var multiplier = direction.x != 0 ? lateralMultiplier : verticalMultiplier;
+                impulse *= multiplier;
+                onPoweredPush?.Invoke();
+            }
+            else
+            {
+                onPush?.Invoke();
+            }
 
             playerRb.AddForce(direction * impulse, ForceMode2D.Impulse);
             Dispose();
