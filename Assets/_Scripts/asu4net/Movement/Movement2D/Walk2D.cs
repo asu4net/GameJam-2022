@@ -79,7 +79,7 @@ namespace asu4net.Movement.Movement2D
             HandleAnimations();
         }
 
-        private void SetLookDir(float value)
+        public void SetLookDir(float value)
         {
             var dir = Mathf.Sign(value);
             var notChanged = Math.Abs(dir - _lookDir) < 0.001f;

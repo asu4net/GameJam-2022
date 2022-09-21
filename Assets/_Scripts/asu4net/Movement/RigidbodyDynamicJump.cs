@@ -36,7 +36,11 @@ namespace asu4net.Movement.Movement2D
                     break;
                 case Mode.Jump2D:
                     getVerticalSpeed = () => rb2D.velocity.y;
-                    setVerticalSpeed = value => rb2D.velocity = new Vector2(rb2D.velocity.x, value);
+                    setVerticalSpeed = value =>
+                    {
+                        if (!jumpEnabled) return;
+                        rb2D.velocity = new Vector2(rb2D.velocity.x, value);
+                    };
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

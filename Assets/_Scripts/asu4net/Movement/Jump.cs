@@ -21,6 +21,8 @@ namespace asu4net.Movement
             get => getVerticalSpeed(); 
             set => setVerticalSpeed(value);
         }
+
+        public bool jumpEnabled { get; set; } = true;
         protected abstract Func<float> getVerticalSpeed { get; set; }
         protected abstract Action<float> setVerticalSpeed { get; set; }
         protected bool canJump { get; set; } = true;
@@ -125,7 +127,7 @@ namespace asu4net.Movement
 
         #region Methods
 
-        public void ResetJump()
+        public virtual void ResetJump()
         {
             //Allow jump again...
             canJump = true;
@@ -152,6 +154,8 @@ namespace asu4net.Movement
 
         public virtual bool SetJumpData(bool pressedValue, bool releasedValue)
         {
+            if (!jumpEnabled) return false;
+            
             pressed = pressedValue;
             released = releasedValue;
 

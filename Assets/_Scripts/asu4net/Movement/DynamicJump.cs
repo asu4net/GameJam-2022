@@ -37,6 +37,12 @@ namespace asu4net.Movement
             JumpDuring(maxPressTime);
         }
 
+        public override void ResetJump()
+        {
+            base.ResetJump();
+            jumpTime = 0;
+        }
+
         #endregion
 
         #region Methods
