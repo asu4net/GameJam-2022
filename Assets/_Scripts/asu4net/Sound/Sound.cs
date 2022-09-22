@@ -6,9 +6,9 @@ namespace asu4net.Sound
     {
         Walk,
         Jump,
-        Push,
-        PoweredPush,
-        PerfectPush,
+        BasicBounce,
+        HoldBounce,
+        PerfectBounce,
         Land,
         Shot,
         PlatformAttach
