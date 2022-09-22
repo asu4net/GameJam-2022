@@ -1172,7 +1172,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 413443666, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: 2127769889, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 2, y: -1, z: 0}
@@ -1212,7 +1212,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 146790361, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: 1127172292, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 2, y: 1, z: 0}
@@ -1228,7 +1228,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -831959460, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: -2077782465, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 4, y: 1, z: 0}
@@ -1276,7 +1276,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -831959460, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: -2077782465, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 6, y: 2, z: 0}
@@ -1348,7 +1348,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 1711687468, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: -1842132175, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 5, y: 5, z: 0}
@@ -1855,6 +1855,51 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1573825655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1573825657}
+  - component: {fileID: 1573825656}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1573825656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573825655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee57beb7db804d3cb1b8c1a39f3e24ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioPoolSize: 20
+--- !u!4 &1573825657
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573825655}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1630090360
 GameObject:
   m_ObjectHideFlags: 0
@@ -2249,6 +2294,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2050832336}
+        m_TargetAssemblyTypeName: game.shot.Shot2D, Assembly-CSharp
+        m_MethodName: JumpInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a117ff17-83cd-4d91-b7cb-40a9066b56b1
     m_ActionName: movement/jump[/Keyboard/space]
   - m_PersistentCalls:
@@ -2415,12 +2472,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onShotPerformed:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1573825656}
+        m_TargetAssemblyTypeName: asu4net.Sound.SoundManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Shot
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPush:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1573825656}
+        m_TargetAssemblyTypeName: asu4net.Sound.SoundManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Push
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPoweredPush:
+    m_PersistentCalls:
+      m_Calls: []
+  onPerfectPush:
+    m_PersistentCalls:
       m_Calls: []
   <bullet>k__BackingField: {fileID: 8474364024708840112, guid: f66688fe734681c42a667889b1cac759, type: 3}
   <offset>k__BackingField: 1.5
   <force>k__BackingField: 5
   <cannon>k__BackingField: {fileID: 1736235963}
   <cooldown>k__BackingField: 1
+  <perfectTime>k__BackingField: 0.2
 --- !u!1 &2099381263
 GameObject:
   m_ObjectHideFlags: 0

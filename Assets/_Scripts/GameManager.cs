@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using asu4net.Utils;
 using UnityEngine;
 
 namespace game
@@ -16,9 +17,19 @@ namespace game
         
         private void Awake()
         {
-            SingletonInit();
-            
+            InitialiseSingleton();
             player ??= GameObject.FindWithTag(PlayerTag);
+        }
+        
+        private void InitialiseSingleton()
+        {
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(gameObject);
+                return;
+            }
+            Destroy(gameObject);
         }
         
         public Coroutine WaitAndDo(float time, Action action)
@@ -42,17 +53,6 @@ namespace game
             }
 
             yield return null;
-        }
-        
-        private void SingletonInit()
-        {
-            if (instance == null)
-            {
-                instance = this;
-                DontDestroyOnLoad(gameObject);
-            }
-            else
-                Destroy(gameObject);
         }
     }
 }

@@ -19,6 +19,7 @@ namespace game.shot
         [field: SerializeField] private float cooldown { get; set; } = 1f;
         [field: SerializeField] private float perfectTime { get; set; } = 0.2f;
         
+        public bool jumpPressed { get; private set; }
         public bool pressed { get; private set; }
         public bool released { get; private set; }
         public bool perfect { get; private set; }
@@ -31,9 +32,6 @@ namespace game.shot
             released = context.canceled;
             
             if (!pressed || onCooldown) return;
-
-            perfect = true;
-            GameManager.instance.WaitAndDo(perfectTime, () => perfect = false);
             
             onCooldown = true;
             GameManager.instance.WaitAndDo(cooldown, () => onCooldown = false);
@@ -46,6 +44,14 @@ namespace game.shot
             onShotPerformed?.Invoke();
             bulletInstance.Fire(this, shotDir * force);
             Debug.DrawLine(spawnPoint, spawnPoint + shotDir * force, Color.red, 0.5f);
+        }
+
+        public void JumpInput(InputAction.CallbackContext context)
+        {
+            jumpPressed = context.performed;
+            if (!jumpPressed) return;
+            perfect = true;
+            GameManager.instance.WaitAndDo(perfectTime, () => perfect = false);
         }
     }
 }

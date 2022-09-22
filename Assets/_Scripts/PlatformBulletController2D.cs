@@ -92,7 +92,7 @@ namespace game.shot
                 impulse *= multiplier;
                 shot.onPerfectPush?.Invoke();
             }
-            else if (shot.pressed)
+            else if (shot.jumpPressed)
             {
                 var multiplier = direction.x != 0 ? lateralMultiplierHold : verticalMultiplierHold;
                 impulse *= multiplier;
