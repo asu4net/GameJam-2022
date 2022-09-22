@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0c585a0967b4dddba8a46731b26486d, type: 3}
   m_Name: SoundSettings
   m_EditorClassIdentifier: 
+  <general>k__BackingField: 0.498
   <categoryVolumes>k__BackingField:
   - category: 0
     volume: 0.029
