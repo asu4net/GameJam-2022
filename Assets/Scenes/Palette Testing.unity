@@ -1172,7 +1172,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 413443666, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: 2127769889, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 2, y: -1, z: 0}
@@ -1204,7 +1204,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -1767337088, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: -1413649381, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 3, y: 0, z: 0}
@@ -1212,7 +1212,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 146790361, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: 1127172292, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 2, y: 1, z: 0}
@@ -1308,7 +1308,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -1767337088, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: -1413649381, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 6, y: 3, z: 0}
@@ -1332,7 +1332,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -1145604841, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: -1396752286, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 6, y: 4, z: 0}
@@ -1348,7 +1348,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 1711687468, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: -1842132175, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 5, y: 5, z: 0}
@@ -1372,7 +1372,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: -1145604841, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: -1396752286, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 6, y: 6, z: 0}
@@ -2191,6 +2191,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fd66a1e344548bebc263086d1b67a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onJumpPerformed:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1573825656}
+        m_TargetAssemblyTypeName: asu4net.Sound.SoundManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Jump
+          m_BoolArgument: 0
+        m_CallState: 2
   groundCheckSensor: {fileID: 126292070}
   topSensor: {fileID: 163127211}
   maxJumps: 1
@@ -2450,6 +2465,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8435587ac4021174eb6cfc0338976796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onStep:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1573825656}
+        m_TargetAssemblyTypeName: asu4net.Sound.SoundManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Walk
+          m_BoolArgument: 0
+        m_CallState: 2
+  stepInterval: 0.2
   startSpeed: 6
   autoLookDir: 1
   playAnimations: 1

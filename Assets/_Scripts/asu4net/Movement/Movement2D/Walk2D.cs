@@ -3,6 +3,8 @@ using MyBox;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using asu4net.Animation;
+using game;
+using UnityEngine.Events;
 
 //TODO: Move logic to movable (haha fun)
 //TODO: Add run support
@@ -12,6 +14,8 @@ namespace asu4net.Movement.Movement2D
     [RequireComponent(typeof(Rigidbody2D))]
     public class Walk2D : Movable
     {
+        public UnityEvent onStep;
+        
         public override float Speed { get; set; }
         public float velocity
         {
@@ -45,8 +49,8 @@ namespace asu4net.Movement.Movement2D
                        wallRightSensor.isDetecting && MoveDir < 0;
             }
         }
-        
-        [Header("Settings:")] 
+
+        [Header("Settings:")] [SerializeField] private float stepInterval = 0.5f;
         [SerializeField] private float startSpeed = 10f;
         [SerializeField] private bool autoLookDir = true;
         [SerializeField] private bool playAnimations;
@@ -67,6 +71,7 @@ namespace asu4net.Movement.Movement2D
         
         private Rigidbody2D _rb;
         private float _lookDir;
+        private bool _executeOnStep = true;
 
         private void Start()
         {
@@ -108,7 +113,13 @@ namespace asu4net.Movement.Movement2D
             if (MoveDir != 0 && autoLookDir)
                 LookDir = MoveDir;
 
+            
             velocity = Speed * MoveDir;
+            
+            if (!_executeOnStep || MoveDir == 0 || _rb.velocity.y != 0) return;
+            onStep?.Invoke();
+            _executeOnStep = false;
+            GameManager.instance.WaitAndDo(stepInterval, () => _executeOnStep = true);
         }
 
         private void HandleAnimations()

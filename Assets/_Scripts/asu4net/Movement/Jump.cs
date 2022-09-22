@@ -5,6 +5,7 @@ using asu4net.Animation;
 using asu4net.Sensors;
 using MyBox;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Sensor = asu4net.Sensors.Sensor;
 
@@ -13,6 +14,7 @@ namespace asu4net.Movement
     public abstract class Jump : MonoBehaviour
     {
         #region Properties & inspector fields
+        public UnityEvent onJumpPerformed;
         
         protected bool pressed { get; private set; }
         protected bool released { get; private set; }
@@ -160,6 +162,8 @@ namespace asu4net.Movement
             released = releasedValue;
 
             if (!pressed || !canJump) return false;
+            
+            onJumpPerformed?.Invoke();
             
             if (waitCoyoteTime != null)
                 StopCoroutine(waitCoyoteTime);

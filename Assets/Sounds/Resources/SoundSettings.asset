@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <categoryVolumes>k__BackingField:
   - category: 0
-    volume: 0.17
+    volume: 0.029
   - category: 1
-    volume: 0.5
+    volume: 0.201
   - category: 2
-    volume: 0.5
+    volume: 0.18
