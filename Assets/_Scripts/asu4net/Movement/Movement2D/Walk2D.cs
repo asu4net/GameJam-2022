@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using asu4net.Animation;
 using game;
-using Unity.Mathematics;
 using UnityEngine.Events;
 
 //TODO: Move logic to movable (haha fun)
@@ -87,7 +86,7 @@ namespace asu4net.Movement.Movement2D
             HandleAnimations();
 
             var sensors = wallRightSensor.transform.parent;
-            sensors.rotation = quaternion.Euler(sensors.rotation.x, sensors.rotation.y * -1, sensors.rotation.z);
+            sensors.rotation = Quaternion.Euler(sensors.rotation.x, sensors.rotation.y * -1, sensors.rotation.z);
         }
 
         public void SetLookDir(float value)
