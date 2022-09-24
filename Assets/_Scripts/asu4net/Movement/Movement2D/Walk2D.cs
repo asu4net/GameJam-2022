@@ -73,6 +73,8 @@ namespace asu4net.Movement.Movement2D
         private float _lookDir;
         private bool _executeOnStep = true;
 
+        private const float ZeroVerticalSpeed = 0.0001f;
+
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
@@ -115,7 +117,8 @@ namespace asu4net.Movement.Movement2D
 
             velocity = Speed * MoveDir;
 
-            if (!_executeOnStep || MoveDir == 0 || _rb.velocity.y != 0) return;
+            if (!_executeOnStep || MoveDir == 0 || Mathf.Abs(_rb.velocity.y) > ZeroVerticalSpeed) return;
+            
             onStep?.Invoke();
             _executeOnStep = false;
             GameManager.instance.WaitAndDo(stepInterval, () => _executeOnStep = true);
