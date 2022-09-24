@@ -185,7 +185,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.85}
+  m_Offset: {x: -0.008783817, y: -0.85}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -196,7 +196,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.1}
+  m_Size: {x: 0.51756763, y: 0.100000024}
   m_EdgeRadius: 0
 --- !u!50 &6519329611158685075
 Rigidbody2D:
@@ -380,7 +380,7 @@ MonoBehaviour:
   topSensor: {fileID: 6519329613012315635}
   maxJumps: 1
   autoJump: 0
-  coyoteTime: 0.05
+  coyoteTime: 0.1
   jumpBufferingTime: 0.1
   clampFallSpeed: 1
   maxFallSpeed: 20
@@ -682,7 +682,7 @@ MonoBehaviour:
   searchAll: 0
   <baseLayer>k__BackingField:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 64
   searchTarget: 0
   targetLayer:
     serializedVersion: 2
@@ -866,7 +866,7 @@ MonoBehaviour:
   searchAll: 0
   <baseLayer>k__BackingField:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 64
   searchTarget: 0
   targetLayer:
     serializedVersion: 2
@@ -1138,7 +1138,7 @@ MonoBehaviour:
   searchAll: 0
   <baseLayer>k__BackingField:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 64
   searchTarget: 0
   targetLayer:
     serializedVersion: 2
