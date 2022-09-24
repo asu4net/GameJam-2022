@@ -834,7 +834,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 1711687468, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: -1842132175, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 5, y: 5, z: 0}
@@ -850,7 +850,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 146790361, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: 1127172292, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 5, y: 6, z: 0}
@@ -882,7 +882,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 1828886673, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
       - {fileID: 522296588, guid: 51ad829947969854a916d042fdaf25cb, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 6, y: 7, z: 0}
@@ -1538,6 +1538,22 @@ PrefabInstance:
     - target: {fileID: 6519329611158685086, guid: 075ed45d9659c37478ae360b81289b7c, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519329613043406748, guid: 075ed45d9659c37478ae360b81289b7c, type: 3}
+      propertyPath: m_Size.x
+      value: 0.93752694
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519329613043406748, guid: 075ed45d9659c37478ae360b81289b7c, type: 3}
+      propertyPath: m_Size.y
+      value: 0.97829354
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519329613043406748, guid: 075ed45d9659c37478ae360b81289b7c, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.003136158
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519329613043406748, guid: 075ed45d9659c37478ae360b81289b7c, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.41292816
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 075ed45d9659c37478ae360b81289b7c, type: 3}

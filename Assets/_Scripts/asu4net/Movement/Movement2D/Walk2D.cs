@@ -113,9 +113,8 @@ namespace asu4net.Movement.Movement2D
             if (MoveDir != 0 && autoLookDir)
                 LookDir = MoveDir;
 
-            
             velocity = Speed * MoveDir;
-            
+
             if (!_executeOnStep || MoveDir == 0 || _rb.velocity.y != 0) return;
             onStep?.Invoke();
             _executeOnStep = false;
