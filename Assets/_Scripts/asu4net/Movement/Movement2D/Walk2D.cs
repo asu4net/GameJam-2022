@@ -124,7 +124,8 @@ namespace asu4net.Movement.Movement2D
         private void HandleAnimations()
         {
             if (!playAnimations) return;
-            var isWalking = canMove && velocity != 0;
+            
+            var isWalking = canMove && MoveDir != 0;
             animationManager.Play(runAnimationName, isWalking);
         }
     }
