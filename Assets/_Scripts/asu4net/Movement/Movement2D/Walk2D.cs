@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using asu4net.Animation;
 using game;
+using Unity.Mathematics;
 using UnityEngine.Events;
 
 //TODO: Move logic to movable (haha fun)
@@ -45,8 +46,8 @@ namespace asu4net.Movement.Movement2D
             get
             {
                 if (!useSensors) return false;
-                return wallLeftSensor.isDetecting && MoveDir > 0 ||
-                       wallRightSensor.isDetecting && MoveDir < 0;
+                return wallLeftSensor.isDetecting && MoveDir < 0 ||
+                       wallRightSensor.isDetecting && MoveDir > 0;
             }
         }
 
@@ -84,6 +85,9 @@ namespace asu4net.Movement.Movement2D
         {
             Move();
             HandleAnimations();
+
+            var sensors = wallRightSensor.transform.parent;
+            sensors.rotation = quaternion.Euler(sensors.rotation.x, sensors.rotation.y * -1, sensors.rotation.z);
         }
 
         public void SetLookDir(float value)
@@ -108,7 +112,7 @@ namespace asu4net.Movement.Movement2D
 
             if (wallCollision)
             {
-                IsStopped = true;
+                velocity = 0;
                 return;
             }
 
@@ -128,7 +132,7 @@ namespace asu4net.Movement.Movement2D
         {
             if (!playAnimations) return;
             
-            var isWalking = canMove && MoveDir != 0;
+            var isWalking = canMove && MoveDir != 0 && velocity != 0;
             animationManager.Play(runAnimationName, isWalking);
         }
     }
