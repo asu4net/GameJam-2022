@@ -1,17 +1,28 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using asu4net.Utils;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace game
 {
     [DefaultExecutionOrder(0)]
     public class GameManager : MonoBehaviour
     {
+        [Serializable]
+        public struct OnWaterChangedEventArgs
+        {
+            public bool increased;
+            public float currentAmount;
+        }
+        
+        public UnityEvent onGameOver;
+        public UnityEvent<OnWaterChangedEventArgs> onWaterChanged;
+        
         public static GameManager instance { get; private set; }
 
         [field: SerializeField] public GameObject player { get; private set; }
+
+        private int _water = 100;
 
         private const string PlayerTag = "Player";
         
@@ -30,6 +41,27 @@ namespace game
                 return;
             }
             Destroy(gameObject);
+        }
+
+        public void AddWater(int amount)
+        {
+            var water = _water;
+            water += amount;
+
+            var eventArgs = new OnWaterChangedEventArgs()
+            {
+                increased = water >= _water,
+                currentAmount = water
+            };
+            
+           onWaterChanged?.Invoke(eventArgs);
+           
+           _water = water;
+           
+           if (water > 0) return;
+            
+           _water = 0;
+           onGameOver?.Invoke();
         }
         
         public Coroutine WaitAndDo(float time, Action action)
