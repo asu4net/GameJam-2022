@@ -87,7 +87,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 53d896b022ac2364aa2c0ac4ad6b8f2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -1138,7 +1138,7 @@ MonoBehaviour:
   searchAll: 0
   <baseLayer>k__BackingField:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 256
   searchTarget: 0
   targetLayer:
     serializedVersion: 2
