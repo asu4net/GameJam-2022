@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace game
 {
@@ -94,6 +95,7 @@ namespace game
             var water = amount;
             
             if (water > MaxWater) water = MaxWater;
+            else if (water < 0) water = 0;
             
             var eventArgs = new OnWaterChangedEventArgs()
             {
@@ -102,13 +104,12 @@ namespace game
             };
             
             onWaterChanged?.Invoke(eventArgs);
-
+            
             _water = water;
-           
+            
             if (water > 0) return;
-
-            _water = 0;
             onGameOver?.Invoke();
+            SceneManager.LoadScene(0);
         }
 
         public void AddWater(int amount)
