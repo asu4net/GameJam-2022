@@ -31,6 +31,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "nextLevel",
+                    "type": "Button",
+                    "id": "5602ab70-4586-44bb-9252-91a7fc5a04cf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "prevLevel",
+                    "type": "Button",
+                    "id": "e1794ee9-6524-4eed-9e3c-c2f650f772fe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -163,6 +181,50 @@
                     "processors": "",
                     "groups": "controller",
                     "action": "shoot_platform",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ef0f2529-b3dc-4488-b7a9-2c68f8ffd42a",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "controller",
+                    "action": "nextLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "473d1561-b538-470f-9c44-3e2f3c08e3da",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard",
+                    "action": "nextLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3f0d1859-35d0-4f54-8e99-556bd8f1a120",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "keyboard",
+                    "action": "prevLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d243ab0-876c-4af9-8bca-dcb1ab4ae31c",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "controller",
+                    "action": "prevLevel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -53,6 +53,24 @@ public partial class @PlayerInputAsset : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""nextLevel"",
+                    ""type"": ""Button"",
+                    ""id"": ""5602ab70-4586-44bb-9252-91a7fc5a04cf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""prevLevel"",
+                    ""type"": ""Button"",
+                    ""id"": ""e1794ee9-6524-4eed-9e3c-c2f650f772fe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -187,6 +205,50 @@ public partial class @PlayerInputAsset : IInputActionCollection2, IDisposable
                     ""action"": ""shoot_platform"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef0f2529-b3dc-4488-b7a9-2c68f8ffd42a"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""controller"",
+                    ""action"": ""nextLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""473d1561-b538-470f-9c44-3e2f3c08e3da"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard"",
+                    ""action"": ""nextLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3f0d1859-35d0-4f54-8e99-556bd8f1a120"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""keyboard"",
+                    ""action"": ""prevLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6d243ab0-876c-4af9-8bca-dcb1ab4ae31c"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""controller"",
+                    ""action"": ""prevLevel"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -291,6 +353,8 @@ public partial class @PlayerInputAsset : IInputActionCollection2, IDisposable
         m_level_jump = m_level.FindAction("jump", throwIfNotFound: true);
         m_level_run = m_level.FindAction("run", throwIfNotFound: true);
         m_level_shoot_platform = m_level.FindAction("shoot_platform", throwIfNotFound: true);
+        m_level_nextLevel = m_level.FindAction("nextLevel", throwIfNotFound: true);
+        m_level_prevLevel = m_level.FindAction("prevLevel", throwIfNotFound: true);
         // debug
         m_debug = asset.FindActionMap("debug", throwIfNotFound: true);
         m_debug_RecordPath = m_debug.FindAction("RecordPath", throwIfNotFound: true);
@@ -357,6 +421,8 @@ public partial class @PlayerInputAsset : IInputActionCollection2, IDisposable
     private readonly InputAction m_level_jump;
     private readonly InputAction m_level_run;
     private readonly InputAction m_level_shoot_platform;
+    private readonly InputAction m_level_nextLevel;
+    private readonly InputAction m_level_prevLevel;
     public struct LevelActions
     {
         private @PlayerInputAsset m_Wrapper;
@@ -364,6 +430,8 @@ public partial class @PlayerInputAsset : IInputActionCollection2, IDisposable
         public InputAction @jump => m_Wrapper.m_level_jump;
         public InputAction @run => m_Wrapper.m_level_run;
         public InputAction @shoot_platform => m_Wrapper.m_level_shoot_platform;
+        public InputAction @nextLevel => m_Wrapper.m_level_nextLevel;
+        public InputAction @prevLevel => m_Wrapper.m_level_prevLevel;
         public InputActionMap Get() { return m_Wrapper.m_level; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -382,6 +450,12 @@ public partial class @PlayerInputAsset : IInputActionCollection2, IDisposable
                 @shoot_platform.started -= m_Wrapper.m_LevelActionsCallbackInterface.OnShoot_platform;
                 @shoot_platform.performed -= m_Wrapper.m_LevelActionsCallbackInterface.OnShoot_platform;
                 @shoot_platform.canceled -= m_Wrapper.m_LevelActionsCallbackInterface.OnShoot_platform;
+                @nextLevel.started -= m_Wrapper.m_LevelActionsCallbackInterface.OnNextLevel;
+                @nextLevel.performed -= m_Wrapper.m_LevelActionsCallbackInterface.OnNextLevel;
+                @nextLevel.canceled -= m_Wrapper.m_LevelActionsCallbackInterface.OnNextLevel;
+                @prevLevel.started -= m_Wrapper.m_LevelActionsCallbackInterface.OnPrevLevel;
+                @prevLevel.performed -= m_Wrapper.m_LevelActionsCallbackInterface.OnPrevLevel;
+                @prevLevel.canceled -= m_Wrapper.m_LevelActionsCallbackInterface.OnPrevLevel;
             }
             m_Wrapper.m_LevelActionsCallbackInterface = instance;
             if (instance != null)
@@ -395,6 +469,12 @@ public partial class @PlayerInputAsset : IInputActionCollection2, IDisposable
                 @shoot_platform.started += instance.OnShoot_platform;
                 @shoot_platform.performed += instance.OnShoot_platform;
                 @shoot_platform.canceled += instance.OnShoot_platform;
+                @nextLevel.started += instance.OnNextLevel;
+                @nextLevel.performed += instance.OnNextLevel;
+                @nextLevel.canceled += instance.OnNextLevel;
+                @prevLevel.started += instance.OnPrevLevel;
+                @prevLevel.performed += instance.OnPrevLevel;
+                @prevLevel.canceled += instance.OnPrevLevel;
             }
         }
     }
@@ -463,6 +543,8 @@ public partial class @PlayerInputAsset : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnRun(InputAction.CallbackContext context);
         void OnShoot_platform(InputAction.CallbackContext context);
+        void OnNextLevel(InputAction.CallbackContext context);
+        void OnPrevLevel(InputAction.CallbackContext context);
     }
     public interface IDebugActions
     {
