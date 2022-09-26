@@ -94,6 +94,7 @@ namespace game
             var water = amount;
             
             if (water > MaxWater) water = MaxWater;
+            else if (water < 0) water = 0;
             
             var eventArgs = new OnWaterChangedEventArgs()
             {
@@ -102,12 +103,10 @@ namespace game
             };
             
             onWaterChanged?.Invoke(eventArgs);
-
+            
             _water = water;
-           
+            
             if (water > 0) return;
-
-            _water = 0;
             onGameOver?.Invoke();
         }
 
