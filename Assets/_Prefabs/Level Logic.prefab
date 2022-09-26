@@ -96,6 +96,7 @@ Transform:
   - {fileID: 28798216665191241}
   - {fileID: 28798216913830055}
   - {fileID: 28798215765394732}
+  - {fileID: 3891731921434288521}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -458,6 +459,83 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!1 &4175065164385871474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3891731921434288521}
+  - component: {fileID: 6051601541295029519}
+  - component: {fileID: 2176433042533138252}
+  m_Layer: 0
+  m_Name: Water
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3891731921434288521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4175065164385871474}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.92, y: -6.74, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 28798215665527334}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6051601541295029519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4175065164385871474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 703b2209e73f8324fb5720a9d3270211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onWaterTouched:
+    m_PersistentCalls:
+      m_Calls: []
+  <waterSplashPrefab>k__BackingField: {fileID: 8838525411888458979, guid: 372d6ea7752ce30479afcda1694dd873, type: 3}
+  <waterSplashOffset>k__BackingField: {x: 0, y: -0.8}
+  <timeToDestroy>k__BackingField: 1
+--- !u!61 &2176433042533138252
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4175065164385871474}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.28072357, y: 0.12760186}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 20.95694, y: 2.071857}
+  m_EdgeRadius: 0
 --- !u!1001 &28798216239343229
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -519,11 +597,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6519329611158685073, guid: 075ed45d9659c37478ae360b81289b7c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.133888
+      value: -1.19
       objectReference: {fileID: 0}
     - target: {fileID: 6519329611158685073, guid: 075ed45d9659c37478ae360b81289b7c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.457872
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 6519329611158685073, guid: 075ed45d9659c37478ae360b81289b7c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -592,6 +670,10 @@ PrefabInstance:
     - target: {fileID: 6519329611158685074, guid: 075ed45d9659c37478ae360b81289b7c, type: 3}
       propertyPath: onJumpPerformed.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519329611158685078, guid: 075ed45d9659c37478ae360b81289b7c, type: 3}
+      propertyPath: animations.Array.size
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6519329611158685079, guid: 075ed45d9659c37478ae360b81289b7c, type: 3}
       propertyPath: onStep.m_PersistentCalls.m_Calls.Array.data[0].m_Target

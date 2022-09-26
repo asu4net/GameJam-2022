@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 namespace game
 {
-    [DefaultExecutionOrder(0)]
+    [DefaultExecutionOrder(-1)]
     public class GameManager : MonoBehaviour
     {
         [Serializable]
@@ -22,8 +22,9 @@ namespace game
 
         [field: SerializeField] public GameObject player { get; private set; }
 
-        private int _water = 100;
+        private int _water = MaxWater;
 
+        public const int MaxWater = 100;
         private const string PlayerTag = "Player";
         
         private void Awake()
@@ -48,6 +49,8 @@ namespace game
             var water = _water;
             water += amount;
 
+            if (water > MaxWater) water = MaxWater;
+            
             var eventArgs = new OnWaterChangedEventArgs()
             {
                 increased = water >= _water,
@@ -55,11 +58,11 @@ namespace game
             };
             
            onWaterChanged?.Invoke(eventArgs);
-           
+
            _water = water;
            
            if (water > 0) return;
-            
+
            _water = 0;
            onGameOver?.Invoke();
         }

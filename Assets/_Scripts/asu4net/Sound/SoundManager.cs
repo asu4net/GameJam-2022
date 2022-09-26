@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace asu4net.Sound
 {
-    [DefaultExecutionOrder(0)]
+    [DefaultExecutionOrder(-1)]
     public class SoundManager : MonoBehaviour
     {
         [SerializeField] private int audioPoolSize = 20;
