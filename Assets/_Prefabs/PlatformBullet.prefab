@@ -430,7 +430,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31c711dac63a4993bb09312367a967de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <animator>k__BackingField: {fileID: 457640401262804059}
   timeToEnable: 0.5
+  timeToDestroy: 1
   playerVerticalImpulse: 15
   playerLateralImpulse: 12
   lateralMultiplierHold: 1.3

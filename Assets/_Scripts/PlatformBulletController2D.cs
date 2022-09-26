@@ -8,7 +8,9 @@ namespace game.shot
     [RequireComponent(typeof(Collider2D))]
     public class PlatformBulletController2D : BulletController2D
     {
+        [field: SerializeField] private Animator animator { get; set; }
         [field: SerializeField] private float timeToEnable = 0.5f;
+        [field: SerializeField] private float timeToDestroy = 1f;
         [field: SerializeField] private float playerVerticalImpulse = 30f;
         [field: SerializeField] private float playerLateralImpulse = 30f;
         [field: SerializeField] private float lateralMultiplierHold = 1.5f;
@@ -33,7 +35,8 @@ namespace game.shot
         private bool disposed { get; set; }
         private Shot2D shot { get; set; }
         private bool platformEnabled { get; set; }
-        
+
+        private const string DestroyParam = "destroy";
         private const string SnapTag = "snapPlatform";
 
         protected override void OnAwake()
@@ -109,8 +112,10 @@ namespace game.shot
         
         private void Dispose()
         {
+            if (disposed) return;
             disposed = true;
-            Destroy(gameObject);
+            animator.SetTrigger(DestroyParam);
+            GameManager.instance.WaitAndDo(timeToDestroy, () => Destroy(gameObject));
         }
         
         private void BecomePlatform()

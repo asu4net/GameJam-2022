@@ -33,10 +33,10 @@ namespace asu4net.Sound
             if (instance == null)
             {
                 instance = this;
-                DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(transform.root);
                 return;
             }
-            Destroy(gameObject);
+            Destroy(transform.root);
         }
 
         public void Play(Sound sound)

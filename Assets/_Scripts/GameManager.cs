@@ -37,10 +37,10 @@ namespace game
             if (instance == null)
             {
                 instance = this;
-                DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(transform.root);
                 return;
             }
-            Destroy(gameObject);
+            Destroy(transform.root);
         }
 
         public void AddWater(int amount)
