@@ -6,9 +6,6 @@ public class DisableVisualsOnPlay : MonoBehaviour
 {
     public bool debug;
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
         SpriteRenderer[] sr = gameObject.GetComponentsInChildren<SpriteRenderer>();
