@@ -121,7 +121,7 @@ namespace game.shot
         private void BecomePlatform()
         {
             state = State.Platform;
-            coll2D.isTrigger = false;
+            coll2D.isTrigger = true;
             rb.Sleep();
             rb.isKinematic = true;
         }
