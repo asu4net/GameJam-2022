@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace game
 {
@@ -108,6 +109,7 @@ namespace game
             
             if (water > 0) return;
             onGameOver?.Invoke();
+            SceneManager.LoadScene(0);
         }
 
         public void AddWater(int amount)
