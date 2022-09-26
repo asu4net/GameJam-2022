@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2115418533909578874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.342, y: 0, z: 0}
-  m_LocalScale: {x: 0.08124837, y: 0.3, z: 1}
+  m_LocalPosition: {x: 0.264, y: -0.016575, z: 0}
+  m_LocalScale: {x: 0.08124837, y: 0.47250003, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4294868841058803852}
@@ -125,8 +125,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4544136748435476563}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.173, z: 0}
-  m_LocalScale: {x: 0.6015938, y: 0.05, z: 1}
+  m_LocalPosition: {x: -0.00945, y: 0.243, z: 0}
+  m_LocalScale: {x: 0.5051696, y: 0.05, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4294868841058803852}
@@ -190,8 +190,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4696465773221810208}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.178, z: 0}
-  m_LocalScale: {x: 0.6015938, y: 0.05, z: 1}
+  m_LocalPosition: {x: -0.00555, y: -0.267, z: 0}
+  m_LocalScale: {x: 0.5051696, y: 0.05, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4294868841058803852}
@@ -240,6 +240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7066658162074538627}
   - component: {fileID: 7066658162074538626}
+  - component: {fileID: 457640401262804059}
   m_Layer: 0
   m_Name: Visuals
   m_TagString: Untagged
@@ -256,7 +257,7 @@ Transform:
   m_GameObject: {fileID: 7066658162074538638}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3698534843849266805}
@@ -282,7 +283,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -303,8 +304,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.27687788, g: 0.5559034, b: 0.9622642, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 913eeebfa42756e479d8a283aeaf7bea, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -314,6 +315,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &457640401262804059
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7066658162074538638}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 500021b81a7e3a44d8170717d5bc9e79, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7634384508701407487
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +384,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000000059604645, y: -0.001888454}
+  m_Offset: {x: -0.011477292, y: -0.017956637}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -374,7 +395,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6071905, y: 0.30880618}
+  m_Size: {x: 0.5291449, y: 0.47407883}
   m_EdgeRadius: 0
 --- !u!50 &8761438963779173638
 Rigidbody2D:
@@ -411,11 +432,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToEnable: 0.5
   playerVerticalImpulse: 15
-  playerLateralImpulse: 15
-  lateralMultiplierHold: 1.5
-  verticalMultiplierHold: 1.5
-  lateralMultiplierPerfect: 2
-  verticalMultiplierPerfect: 2
+  playerLateralImpulse: 12
+  lateralMultiplierHold: 1.3
+  verticalMultiplierHold: 1.2
+  lateralMultiplierPerfect: 1.5
+  verticalMultiplierPerfect: 1.5
   <lateralImpulseDir>k__BackingField: {x: 1, y: 0.5}
   <disableWalkTime>k__BackingField: 1
   <disableJumpTime>k__BackingField: 1
@@ -448,8 +469,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7988489830979904329}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.345, y: 0, z: 0}
-  m_LocalScale: {x: 0.08860761, y: 0.3, z: 1}
+  m_LocalPosition: {x: -0.295, y: -0.013425, z: 0}
+  m_LocalScale: {x: 0.08860761, y: 0.47250003, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4294868841058803852}
