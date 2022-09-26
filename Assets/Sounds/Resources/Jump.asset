@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Jump
   m_EditorClassIdentifier: 
   <sound>k__BackingField: 1
-  <clip>k__BackingField: {fileID: 8300000, guid: 2c5292ba5cf254919a6b9e2b18e04f49, type: 3}
+  <category>k__BackingField: 0
+  <clip>k__BackingField: {fileID: 8300000, guid: e294203a3d441d949a7f75fdfc70dd92, type: 3}
