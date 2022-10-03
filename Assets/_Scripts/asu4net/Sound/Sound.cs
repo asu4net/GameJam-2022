@@ -2,6 +2,7 @@
 
 namespace asu4net.Sound
 {
+    [Serializable]
     public enum Sound
     {
         Walk,

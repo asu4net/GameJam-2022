@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using asu4net.Utils;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace asu4net.Sound
 {
@@ -58,7 +59,7 @@ namespace asu4net.Sound
                 SaveAudioController(audioController);
             });
         }
-
+        
         public void Play(string sound)
         {
             if (!Enum.TryParse(sound, out Sound enumSound))
